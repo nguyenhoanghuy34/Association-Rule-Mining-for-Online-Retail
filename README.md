@@ -1,65 +1,75 @@
-🛒 Association Rule Mining for Online Retail
-🎯 Mục tiêu
+# 🛒 Association Rule Mining for Online Retail
 
-Dự án nhằm khai thác các quy luật kết hợp giữa các sản phẩm trong dữ liệu bán lẻ online.
-Bằng cách áp dụng thuật toán FP-Growth, mô hình giúp nhận diện những sản phẩm thường được mua cùng nhau, phục vụ:
+**Khai thác quy luật kết hợp sản phẩm bằng thuật toán FP-Growth**
 
-💡 Gợi ý sản phẩm (recommendation).
+---
 
-🏷️ Bán chéo (cross-selling) và bố trí trưng bày hợp lý.
+## 🎯 Mục tiêu
 
-📊 Dữ liệu
+Dự án nhằm khai thác các **quy luật kết hợp** giữa các sản phẩm trong dữ liệu bán lẻ online.  
+Bằng cách áp dụng **thuật toán FP-Growth**, mô hình giúp nhận diện những sản phẩm **thường được mua cùng nhau**, phục vụ:
 
-Nguồn: Online Retail II Dataset (UCI Machine Learning Repository)
+- 💡 **Gợi ý sản phẩm** (Recommendation System)
+- 🏷️ **Bán chéo (Cross-selling)** và **bố trí trưng bày hợp lý**
 
-Các cột chính:
+---
 
-Invoice: Mã hóa đơn.
+## 📊 Dữ liệu
 
-StockCode: Mã sản phẩm.
+**Nguồn**: [Online Retail II Dataset - UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/502/online+retail+ii)
 
-Description: Tên sản phẩm.
+### Các cột chính:
+| Cột            | Mô tả                     |
+|----------------|---------------------------|
+| `Invoice`      | Mã hóa đơn                |
+| `StockCode`    | Mã sản phẩm               |
+| `Description`  | Tên sản phẩm              |
+| `Quantity`     | Số lượng bán              |
+| `InvoiceDate`  | Thời gian giao dịch       |
+| `Price`        | Giá đơn vị                |
+| `Customer ID`  | Mã khách hàng             |
+| `Country`      | Quốc gia                  |
 
-Quantity: Số lượng bán.
+---
 
-InvoiceDate: Thời gian giao dịch.
+## ⚙️ Các bước thực hiện
 
-Price: Giá đơn vị.
+1. **Tiền xử lý dữ liệu**  
+   - Loại bỏ giá trị `null`, hóa đơn trả hàng (`Invoice` bắt đầu bằng 'C')  
+   - Biến đổi dữ liệu thành **dạng giỏ hàng (basket)**
 
-Customer ID: Mã khách hàng.
+2. **Áp dụng FP-Growth**  
+   - Tìm **frequent itemsets** (các tập hợp sản phẩm thường xuất hiện cùng nhau)
 
-Country: Quốc gia.
+3. **Sinh Association Rules**  
+   - Tính: `support`, `confidence`, `lift`  
+   - Lọc các luật có **`lift > 1.2`** → mối quan hệ mạnh
 
-⚙️ Các bước thực hiện
+---
 
-🧹 Tiền xử lý dữ liệu
+## 🧩 Kết quả nổi bật
 
-Loại bỏ giá trị null và hóa đơn trả hàng.
+- Sản phẩm xuất hiện nhiều nhất:  
+  `WHITE HANGING HEART T-LIGHT HOLDER`, `REGENCY CAKESTAND 3 TIER`
+- Nhiều cặp sản phẩm có `lift > 1.2` → **xu hướng mua chung rõ rệt**
 
-Biến đổi dữ liệu thành dạng giỏ hàng (basket).
+---
 
-🔍 Áp dụng thuật toán FP-Growth
+## 🧠 Công nghệ sử dụng
 
-Phát hiện các frequent itemsets – nhóm mặt hàng thường được mua cùng nhau.
+| Công cụ         | Mục đích                     |
+|----------------|------------------------------|
+| Python         | Xử lý dữ liệu & mô hình      |
+| Pandas, NumPy  | Tiền xử lý                   |
+| `mlxtend`      | FP-Growth & Association Rules|
+| Matplotlib     | Trực quan hóa                |
+| Jupyter/Colab  | Môi trường phát triển        |
 
-📈 Sinh luật kết hợp (Association Rules)
+---
 
-Tính các chỉ số: support, confidence, lift.
+## 🚀 Cách chạy dự án
 
-Giữ lại các luật có lift > 1.2 để xác định mối liên hệ mạnh nhất.
-
-🧩 Kết quả
-
-Sản phẩm “WHITE HANGING HEART T-LIGHT HOLDER” và “REGENCY CAKESTAND 3 TIER” có tần suất xuất hiện cao nhất.
-
-Nhiều cặp sản phẩm đạt lift > 1.2, cho thấy khả năng được mua cùng nhau rất lớn.
-
-🧠 Công nghệ sử dụng
-
-Python: Pandas, NumPy, mlxtend, Matplotlib
-
-Môi trường: Jupyter Notebook / Google Colab
-
-💬 Ý nghĩa
-
-Phân tích giúp doanh nghiệp hiểu hành vi mua sắm, tối ưu gợi ý sản phẩm, và tăng doanh thu qua bán chéo.
+### 1. Clone repository
+```bash
+git clone https://github.com/your-username/online-retail-fpgrowth.git
+cd online-retail-fpgrowth
