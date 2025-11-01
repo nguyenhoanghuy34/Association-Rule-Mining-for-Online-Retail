@@ -71,5 +71,5 @@ Bằng cách áp dụng **thuật toán FP-Growth**, mô hình giúp nhận di�
 
 ### 1. Clone repository
 ```bash
-git clone https://github.com/your-username/online-retail-fpgrowth.git
-cd online-retail-fpgrowth
+git clone https://github.com/your-username/online-retail-fpgrowth.git](https://github.com/nguyenhoanghuy34/Association-Rule-Mining-for-Online-Retail.git
+cd Association-Rule-Mining-for-Online-Retail
